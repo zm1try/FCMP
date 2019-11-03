@@ -20,19 +20,12 @@ const source = ({
   select.id = selectClassName;
   select.placeholder = 'Select some channel';
   select.value = newsSource;
-  select.addEventListener('select', onSelectChange);
+  select.addEventListener('change', onSelectChange);
 
   optionsList.forEach(option => select.appendChild(sourceSelectOption({
-    optionValue: option.value,
-    optionDescription: option.description,
+    optionValue: option.id,
+    optionDescription: option.name,
   })));
-
-  // const option1 = document.createElement('option');
-  // option1.value = '1';
-  // select.appendChild(option1);
-  // const option2 = document.createElement('option');
-  // option2.value = '2';
-  // select.appendChild(option2);
 
   sourceForm.appendChild(select);
   component.appendChild(sourceForm);

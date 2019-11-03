@@ -6,81 +6,61 @@ import fetchItems from './modules/fetchItems';
 
 class App {
   constructor() {
-    this.render = this.render.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
+    this.sourceSelectRenderFunction = sourceSelectRenderer;
+    this.newsContainerRenderFunction = newsContainerRenderer;
   }
 
   init() {
-    console.log('here');
     this.component = document.createElement('main');
     this.component.classList.add('main-view');
-
-    this.sourceSelectRenderFunction = sourceSelectRenderer;
-    this.sourceSelect = this.sourceSelectRenderFunction({
-      onSelectChange: this.onSelectChange,
-      newsSource: this.newsSource,
-      // optionsList: this.getSourcesList(),
-      optionsList: [],
-    });
-    this.component.appendChild(this.sourceSelect);
-
-
-    this.newsContainerRendererFunction = newsContainerRenderer;
-    this.newsContainer = this.newsContainerRendererFunction({
-      newsSource: this.newsSource,
-      // newsList: this.getNewsList(),
-      newsList: [],
-    });
-    this.component.appendChild(this.newsContainer);
-    this.loadNewsSources();
-    this.render();
+    const sources = async () => {
+      const response = await this.loadNewsSources();
+      this.sourceSelect = await this.sourceSelectRenderFunction({
+        onSelectChange: this.onSelectChange,
+        newsSource: this.newsSource,
+        optionsList: response.sources,
+      });
+      this.component.appendChild(this.sourceSelect);
+      this.newsContainer = await this.newsContainerRenderFunction({
+        newsList: [],
+      });
+      this.component.appendChild(this.newsContainer);
+    };
+    sources();
   }
 
   loadNewsSources() {
     const some = { data: [] };
     const result = fetchSources(some)
-      .then((res) => { this.a = res; })
-      .catch((err) => { throw err; });
-    console.log(some);
-    return result;
-  }
-
-  loadNewsItems() {
-    const result = fetchItems(this.newsSource)
-      .then(this.render)
+      .then((res) => {
+        this.newsSource = res.sources;
+        return res;
+      })
       .catch((err) => { throw err; });
     return result;
   }
 
   onSelectChange(event) {
-    this.newsSource = event.target.value;
-    this.loadNewsItems();
+    console.log('select');
+    console.log(event.target.value);
+    const items = async () => {
+      const response = await fetchItems(event.target.value);
+      this.newsContainer = await this.newsContainerRenderFunction({
+        newsList: response.articles || [],
+      });
+      console.log(this.component);
+      const oldItems = this.component.querySelector('.news-container');
+      if (oldItems) {
+        this.component.replaceChild(this.newsContainer, oldItems);
+      } else {
+        this.component.appendChild(this.newsContainer);
+      }
+    };
+    items();
   }
 
-
   render() {
-    const sourceSelect = this.sourceSelectRenderFunction({
-      onSelectChange: this.onSelectChange,
-      newsSource: this.newsSource,
-      // optionsList: this.getSourcesList(),
-      optionsList: [],
-    });
-
-    if (this.sourceSelect !== sourceSelect) {
-      this.component.replaceChild(sourceSelect, this.sourceSelect);
-      this.sourceSelect = sourceSelect;
-    }
-
-    const newsContainer = this.newsContainerRendererFunction({
-      newsSource: this.newsSource,
-      // newsList: this.getNewsList(),
-      newsList: [],
-    });
-
-    if (this.newsContainer !== newsContainer) {
-      this.component.replaceChild(newsContainer, this.newsContainer);
-      this.newsContainer = newsContainer;
-    }
-
     return this.component;
   }
 }

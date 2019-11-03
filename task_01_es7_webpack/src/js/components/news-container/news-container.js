@@ -7,10 +7,6 @@ const newsContainer = ({
 }) => {
   const component = document.createElement('div');
   component.classList.add(componentClassName);
-  const test = document.createElement('span');
-  test.textContent = 'Hello, I am news holder';
-
-  component.appendChild(test);
 
   newsList.forEach(item => component.appendChild(newsItem({
     newsItemName: item.name,
