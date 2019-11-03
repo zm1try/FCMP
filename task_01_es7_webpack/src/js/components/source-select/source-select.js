@@ -4,9 +4,8 @@ const componentClassName = 'source-select';
 const sourceFormClassName = `${componentClassName}__form`;
 const selectClassName = `${componentClassName}__select`;
 
-const source = ({
+const sourceSelectComponent = ({
   onSelectChange,
-  newsSource,
   optionsList,
 }) => {
   const component = document.createElement('div');
@@ -18,8 +17,14 @@ const source = ({
   const select = document.createElement('select');
   select.classList.add(selectClassName);
   select.id = selectClassName;
-  select.placeholder = 'Select some channel';
-  select.value = newsSource;
+
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Select some channel';
+  placeholder.selected = true;
+  placeholder.disabled = true;
+  select.appendChild(placeholder);
+
   select.addEventListener('change', onSelectChange);
 
   optionsList.forEach(option => select.appendChild(sourceSelectOption({
@@ -33,4 +38,4 @@ const source = ({
   return component;
 };
 
-export default source;
+export default sourceSelectComponent;

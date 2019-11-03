@@ -14,42 +14,28 @@ class App {
   init() {
     this.component = document.createElement('main');
     this.component.classList.add('main-view');
-    const sources = async () => {
-      const response = await this.loadNewsSources();
+    const renderSources = async () => {
+      const response = await fetchSources();
       this.sourceSelect = await this.sourceSelectRenderFunction({
         onSelectChange: this.onSelectChange,
         newsSource: this.newsSource,
         optionsList: response.sources,
       });
       this.component.appendChild(this.sourceSelect);
-      this.newsContainer = await this.newsContainerRenderFunction({
+      this.emptyNewsContainer = await this.newsContainerRenderFunction({
         newsList: [],
       });
-      this.component.appendChild(this.newsContainer);
+      this.component.appendChild(this.emptyNewsContainer);
     };
-    sources();
-  }
-
-  loadNewsSources() {
-    const some = { data: [] };
-    const result = fetchSources(some)
-      .then((res) => {
-        this.newsSource = res.sources;
-        return res;
-      })
-      .catch((err) => { throw err; });
-    return result;
+    renderSources();
   }
 
   onSelectChange(event) {
-    console.log('select');
-    console.log(event.target.value);
-    const items = async () => {
-      const response = await fetchItems(event.target.value);
+    const renderItems = async (value) => {
+      const response = await fetchItems(value);
       this.newsContainer = await this.newsContainerRenderFunction({
         newsList: response.articles || [],
       });
-      console.log(this.component);
       const oldItems = this.component.querySelector('.news-container');
       if (oldItems) {
         this.component.replaceChild(this.newsContainer, oldItems);
@@ -57,7 +43,7 @@ class App {
         this.component.appendChild(this.newsContainer);
       }
     };
-    items();
+    renderItems(event.target.value);
   }
 
   render() {

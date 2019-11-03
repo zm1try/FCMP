@@ -1,6 +1,6 @@
 const componentClassName = 'source-select-option';
 
-const option = ({
+const sourceSelectOptionComponent = ({
   optionValue,
   optionDescription,
 }) => {
@@ -11,4 +11,4 @@ const option = ({
   return component;
 };
 
-export default option;
+export default sourceSelectOptionComponent;

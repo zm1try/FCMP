@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "(create_folder)&&(node ./node_modules/webpack/bin/webpack.js --config webpack.prod.js)",
+    "build": "(create_folder.bat)&&(node ./node_modules/webpack/bin/webpack.js --config webpack.prod.js)",
     "lint": "eslint ./src/",
     "start": "webpack-dev-server --open --config webpack.dev.js"
   },
