@@ -27,6 +27,15 @@ const sourceSelectComponent = ({
 
   select.addEventListener('change', onSelectChange);
 
+  select.appendChild(sourceSelectOption({
+    optionValue: 'error&apiKey=1',
+    optionDescription: '!!!Unauthorized',
+  }));
+  select.appendChild(sourceSelectOption({
+    optionValue: '111',
+    optionDescription: '!!!Failed to fetch',
+  }));
+
   optionsList.forEach(option => select.appendChild(sourceSelectOption({
     optionValue: option.id,
     optionDescription: option.name,
