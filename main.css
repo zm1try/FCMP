@@ -24,4 +24,10 @@ body {
           color: aquamarine; }
         body .main-view .news-container .news-container-item .news-container-item-title {
           margin-top: 0; }
+  body .toaster {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: red; }
 
