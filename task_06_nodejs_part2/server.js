@@ -1,38 +1,70 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-let news = require('./news');  
+const mongoose = require('mongoose');
+
+const url = 'mongodb://localhost:27017';
+const dbName = 'news';
+
+mongoose.connect(`${url}/${dbName}`, {useNewUrlParser: true});
+
+const newsSchema = new mongoose.Schema({
+  id: String,
+  title: String,
+  description: String
+});
+
+const NewsModel = mongoose.model('News', newsSchema);
 
 router.get('/news/:id', (req, res, next) => {
-    const result = news.sourses.filter(item => item.id === req.params.id);
-    res.send({ result: result });
+    NewsModel.find({id: req.params.id}, (error, response) => {
+      res.status('201').send(response);
+    });
 });
 
 router.get('/news', (req, res, next) => {
-    res.send({ result: news.sourses });
+    NewsModel.find({}, (error, response) => {
+      res.status('201').send(response);
+    });
 });
 
 app.use(express.json());
 
 router.post('/news', (req, res) => {
-    news.sourses = req.body.response;
-    res.status('201').send();
+    const news = req.body.response;
+    NewsModel.insertMany(news, (error, response) => {
+      res.status('201').send();
+    });
 });
 
 router.put('/news/:id', (req, res, next) => {
-    const id = req.params.id;
-    news.sourses.push({
-        id: id,
-        title: req.body.response.title,
-        description: req.body.response.description
+  NewsModel.create({
+      id: req.params.id,
+      title: req.body.title,
+      description: req.body.description
+    }, (error, response) => {
+      res.status('201').send();
     });
-    res.status('201').send();
+});
+
+router.put('/news/update/:id', (req, res, next) => {
+  NewsModel.update({
+      id: req.params.id
+    },
+    {
+      title: req.body.title,
+      description: req.body.description
+    }, (error, response) => {
+      res.status('201').send();
+    });
 });
 
 router.delete('/news/:id', (req, res, next) => {
-    const id = req.params.id;
-    news.sourses = news.sourses.filter(item => item.id !== id)
-    res.status('201').send();
+    NewsModel.remove({
+      id: req.params.id,
+    }, (error, response) => {
+      res.status('201').send();
+    });
 });
 
 router.use((req, res, next) => {
