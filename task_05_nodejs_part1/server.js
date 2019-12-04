@@ -1,18 +1,6 @@
 const express = require('express');
 const app = express();
-
-const news = {
-    sourses: [
-        {
-            title: 'title1',
-            description: 'description1'
-        },
-        {
-            title: 'title2',
-            description: 'description2'
-        },
-    ]
-}
+const news = require('./news');
 
 app.get('/', (req, res) => {
     res.send(JSON.stringify(news));
