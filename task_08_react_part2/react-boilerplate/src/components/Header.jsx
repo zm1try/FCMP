@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 const header = 
-<header class="clearfix">
-    <h1 class="logo">Site name</h1>
-    <nav class="navbar">
-        <label htmlFor="search" class="search-label">Find your movie</label>
-        <input type="text" name="search" id="search" class="search-input"/>
+<header className="clearfix">
+    <h1 className="logo">Site name</h1>
+    <nav className="navbar">
+        <label htmlFor="search" className="search-label">Find your movie</label>
+        <input type="text" name="search" id="search" className="search-input"/>
         <div className="search-button">
-            <span class="search-button__caption">Search</span>
+            <span className="search-button__caption">Search</span>
         </div>
         <div className="search-by__toggle">
-            <span class="toggle__caption">Search by</span>
+            <span className="toggle__caption">Search by</span>
             <div className="toggle__option">
                 <span>Title</span>
             </div>
