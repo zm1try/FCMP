@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 const footer = 
-<footer>
-    <h3>Site name</h3>
+<footer class="clearfix">
+    <h3 class="logo">Site name</h3>
 </footer>
 
 class Footer extends Component {

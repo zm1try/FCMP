@@ -34,25 +34,29 @@ const data = [
 ];
 
 const main = 
-<main>
-    <div>
-        <div className="sort-by-toggle">
-            <span>Search by</span>
-            <div className="search-button">
+<main class="clearfix">
+    <div class="clearfix main-settings">
+        <div className="sort-by__toggle">
+            <span class="toggle__caption">Sort by</span>
+            <div class="toggle__option">
                 <span>Release date</span>
             </div>
-            <div className="search-button">
+            <div class="toggle__option">
                 <span>Raiting</span>
             </div>
         </div>
     </div>
-    <ul>
-        {data.map(elem => <li>
+    <ul class="list">
+        {data.map(elem => <li class="list__item">
                 <div>
-                    <img src="" alt="{elem.title}"/>
-                    <span>{elem.title}</span>
-                    <span>{elem.genre}</span>
-                    <span>{elem.year}</span>
+                    <div class="list__item__poster">
+                        <img src="" alt="{elem.title}" height="400px"/>
+                    </div>
+                    <div class="list__item__caption">
+                        <span class="caption__year">{elem.year}</span>
+                        <span class="caption__title">{elem.title}</span>
+                        <span class="caption__genre">{elem.genre}</span>
+                    </div>
                 </div>
             </li>)}
     </ul>
