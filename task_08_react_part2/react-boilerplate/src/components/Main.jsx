@@ -4,30 +4,13 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [],
-            isLoading: false,
+            list: props.list,
             sortBy: 'release'
         };
     }
 
-    componentDidMount() {
-        this.state.isLoading = true;
-        fetch('https://reactjs-cdp.herokuapp.com/movies')
-            .then(response => response.json())
-            .then((response) => {
-                if (response && response.data) {
-                    this.setState({
-                        list: response.data,
-                        isLoading: false,
-                        sortBy: 'release'
-                    });
-                }
-            })
-            .catch(() => {});
-    }
-
     render() {
-        const { list, isLoading, sortBy } = this.state;
+        const { list, sortBy } = this.state;
 
         const setSortByRating = (e) => {
             e.preventDefault();
@@ -42,10 +25,6 @@ class Main extends Component {
                 sortBy: 'release'
             });
         };
-
-        if (isLoading) {
-            return <p>Loading ...</p>;
-        }
 
         return <main className="clearfix">
                     <div className="clearfix main-settings">
