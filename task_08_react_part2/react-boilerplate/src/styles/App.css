@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #555555;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header, main, footer {
+    background-color: #666666;
+    padding: 10px 40px;
+    margin: 10px 0;
+}
+
+.logo {
+    font-size: 20px;
+    color: #f65261;
+    margin: 10px 0;
+}
+
+header .navbar {
+    margin: 20px 40px;
+}
+
+header .search-label {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+header .search-input {
+    float: left;
+    width: 80%;
+    height: 40px;
+    padding: 4px 10px;
+    line-height: 30px;
+    vertical-align: middle;
+    margin-bottom: 20px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+header .search-button {
+    float: right;
+    width: 20%;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #f65261;
+    text-align: center;
+    cursor: pointer;
+}
+
+header .search-button .search-button__caption {
+    line-height: 30px;
+    vertical-align: middle;
+    color: white;
+    text-transform: uppercase;
+}
+
+header .search-by__toggle {
+    float: left;
+    color: white;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 20%;
+    margin-bottom: 10px;
+}
+
+header .search-by__toggle .toggle__caption {
+    float: left;
+}
+
+header .search-by__toggle .toggle__option {
+    float: right;
+    width: auto;
+    padding: 0 10px;
+    background-color: #424242;
+    cursor: pointer;
+}
+
+header .search-by__toggle .toggle__option.active {
+    background-color: #f65261;
+}
+
+main .sort-by__toggle {
+    float: right;
+    color: white;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    width: 25%;
+    margin: 10px 0;
+}
+
+main .sort-by__toggle .toggle__caption {
+    float: left;
+}
+
+main .sort-by__toggle .toggle__option {
+    float: right;
+    width: auto;
+    padding: 0 10px;
+    background-color: #424242;
+    cursor: pointer;
+}
+
+main .sort-by__toggle .toggle__option.active {
+    background-color: #f65261;
+}
+
+main .main-settings, main .list {
+    margin: 0 40px;
+}
+
+main .list {
+    margin: 20px 0;
+}
+
+main .list .list__item {
+    display: inline-block;
+    width: 320px;
+    height: 650px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    background-color: #424242;
+}
+
+main .list .list__item:nth-child(3n) {
+    margin-right: 0;
+}
+
+main .list .list__item .list__item__poster {
+    height: auto;
+}
+
+main .list .list__item .list__item__caption {
+    color: white;
+    margin: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+main .list .list__item .list__item__caption .caption__title,
+main .list .list__item .list__item__caption .caption__genre {
+    width: 80%;
+    float: left;
+}
+
+main .list .list__item .list__item__caption .caption__year {
+    width: 20%;
+    float: right;
+    text-align: center;
+    border: 1px solid white;
+}
+
+footer .logo {
+    text-align: center;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
