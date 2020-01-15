@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+app-root {
+    width: 1200px;
+    display: block;
+    margin: 0 auto;
+}
+
+app-my-footer {
+    height: 100px;
+    display: block;
+    background-color: lightskyblue;
+}
+
+app-my-header {
+    height: 100px;
+    display: block;
+    background-color: aliceblue;
+}
+
+app-my-main-view {
+    display: block;
+    background-color: lightgreen;
+    height: 100px;
+}
+
+app-home, app-my-contacts, app-not-found {
+    display: block;
+    float: left;
+}
+
+app-my-sidebar {
+    height: 100px;
+    float: right;
+    display: block;
+    background-color: lightcoral;
+}
