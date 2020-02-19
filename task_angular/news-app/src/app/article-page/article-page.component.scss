@@ -1,0 +1,39 @@
+:host {
+  h3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+    text-align: center;
+    margin: 0;
+    height: 50px;
+  }
+  position: relative;
+  .article-container {
+    border: 1px solid lightgrey;
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 240px auto 140px;
+    grid-template-rows: auto;
+
+    .image-container {
+      margin: 20px;
+      grid-column: 1 / 2;
+    }
+
+    .text-container {
+      grid-column: 2 / 3;
+      margin: 20px;
+      margin-left: 0;
+    }
+
+    .buttons-container {
+      grid-column: 3 / 4;
+      margin: 20px;
+      justify-self: end;
+    }
+  }
+}

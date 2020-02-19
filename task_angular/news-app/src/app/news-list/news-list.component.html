@@ -1,0 +1,4 @@
+<div class='news-list-container'>
+  <app-news-list-item *ngFor='let item of sourceList; let i = index' [article]='item' (onDelete)='removeByIndex(i)'></app-news-list-item>
+  <app-load-more-button *ngIf='isCanLoadMore' (onLoadMore)='loadMore()'></app-load-more-button>
+</div>

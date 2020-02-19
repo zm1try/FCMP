@@ -1,0 +1,76 @@
+:host {
+  h3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+    text-align: center;
+    margin: 0;
+    height: 50px;
+  }
+  position: relative;
+  .form-container {
+    border: 1px solid lightgrey;
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+
+    form {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto auto auto auto;
+      grid-gap: 20px;
+
+      .form-container-item {
+        input, textarea {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .title {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+
+      .description {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .content {
+        grid-column: 1 / 2;
+        grid-row: 3 / 6;
+        textarea {
+          resize: none;
+          height: calc(100% - 20px);
+        }
+      }
+
+      .img-url {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .data {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .author {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .url {
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+      }
+
+      .buttons {
+        grid-column: 2 / 3;
+        grid-row: 5 / 6;
+      }
+    }
+  }
+}

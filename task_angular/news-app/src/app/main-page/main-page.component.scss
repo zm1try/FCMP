@@ -1,0 +1,30 @@
+:host {
+  h3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+    text-align: center;
+    margin: 0;
+    height: 50px;
+  }
+  .main-page-controls {
+    height: 20px;
+    margin: 20px;
+    &_item {
+      display: inline-block;
+      float: left;
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+        float: right;
+      }
+    }
+  }
+
+  app-news-list {
+    display: block;
+    position: relative;
+    clear: both;
+  }
+}
