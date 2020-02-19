@@ -1,0 +1,28 @@
+:host {
+  .article-container {
+    border: 1px solid lightgrey;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 240px auto 140px;
+    grid-template-rows: auto;
+
+    .image-container {
+      margin: 20px;
+      grid-column: 1 / 2;
+    }
+
+    .text-container {
+      grid-column: 2 / 3;
+      margin: 20px;
+      margin-left: 0;
+    }
+
+    .buttons-container {
+      grid-column: 3 / 4;
+      margin: 20px;
+      justify-self: end;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<h3 class='source-title'>{{article && article.source ? article.source.name : 'Local'}}</h3>
+<div class='article-container'>
+    <div class="image-container">
+        <img src="{{article.urlToImage}}" alt="{{article.title}}" width="200px">
+    </div>
+    <div class="text-container">
+      <h4 class='article-title'>{{article.title}}</h4>
+      <p class='article-content'>{{article.content || article.description}}</p>
+      <p class='date'>{{article.publishedAt ? (article.publishedAt | date: 'd/M/yy, h:mm a') : ''}}</p>
+      <p class='author'>{{article.author}}</p>
+      <a  *ngIf='!article.isLocal' href='{{article.url}}' target="_blank">Read more</a>
+    </div>
+    <div *ngIf='article.isLocal' class="buttons-container">
+      <button [routerLink]="['/edit-article', article.id]">Edit</button>
+      <button (click)='removeArticle(article.id)'>Delete</button>
+    </div>
+  </div>

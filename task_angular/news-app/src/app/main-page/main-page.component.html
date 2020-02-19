@@ -1,0 +1,14 @@
+<h3 class='source-title'>{{isOnlyLocal ? 'Local' : title || 'Source Name'}}</h3>
+<div class='main-page-controls'>
+  <app-custom-select class='main-page-controls_item' [list]='sourcesList' (onSelect)='getNewsArticles($event)' [disabled]='isOnlyLocal'></app-custom-select>
+  <div class='main-page-controls_item'>
+      <input type="text" name="filter" id="filter">
+      <button (click)='setFilterByWord()'>Filter</button>
+  </div>
+  <div class='main-page-controls_item'>
+      <input type="checkbox" name="created-by-me-checkbox" id="created-by-me-checkbox" [(ngModel)]='isOnlyLocal' (ngModelChange)='filterListByCheckbox()'>
+      <label for="created-by-me-checkbox">Only created by me</label>
+  </div>
+  <button class='main-page-controls_item' routerLink="/create-article">Add Article</button>
+</div>
+<app-news-list [list]='listToDisplay | filterByWord: filterWordsString'></app-news-list>

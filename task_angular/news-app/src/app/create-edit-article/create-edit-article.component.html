@@ -1,0 +1,61 @@
+<h3 class='source-title'>{{isNewArticle ? 'Create' : 'Edit'}}</h3>
+<div class='form-container'>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+
+    <div class='form-container-item title'>
+      <label>
+        Heading:
+        <input type="text" required formControlName="title" [(ngModel)]='article.title'>
+      </label>
+    </div>
+
+    <div class='form-container-item description'>
+      <label>
+        Short description:
+        <input type="text" required formControlName="description" [(ngModel)]='article.description'>
+      </label>
+    </div>
+
+    <div class='form-container-item content'>
+      <label>
+        Content:
+        <textarea required formControlName="content" [(ngModel)]='article.content'></textarea>
+      </label>
+    </div>
+
+    <div class='form-container-item img-url'>
+      <label>
+        Image:
+        <input type="text" formControlName="urlToImage" [(ngModel)]='article.urlToImage'>
+      </label>
+    </div>
+
+    <div class='form-container-item date'>
+      <label>
+        Date:
+        <input type="text" formControlName="publishedAt" [(ngModel)]='article.publishedAt'>
+      </label>
+    </div>
+
+    <div class='form-container-item author'>
+      <label>
+        Author:
+        <input type="text" formControlName="author" [(ngModel)]='article.author'>
+      </label>
+    </div>
+
+    <div class='form-container-item url'>
+      <label>
+        Source URl:
+        <input type="text" formControlName="url" [(ngModel)]='article.url'>
+      </label>
+    </div>
+
+    <div class='form-container-item buttons'>
+      <button type="submit" [disabled]="!articleForm.valid">Save</button>
+      <button routerLink="/">Cancel</button>
+    </div>
+
+    </form>
+</div>
+

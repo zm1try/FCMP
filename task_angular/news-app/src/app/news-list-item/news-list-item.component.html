@@ -1,0 +1,15 @@
+<div class='article-container'>
+  <div class="image-container">
+      <img src="{{article.urlToImage}}" alt="{{article.title}}" width="200px">
+  </div>
+  <div class="text-container">
+    <h4 class='article-title'>{{article.title}}</h4>
+    <p class='article-description'>{{article.description}}</p>
+    <p class='date'>{{article.publishedAt ? (article.publishedAt | date: 'd/M/yy, h:mm a') : ''}}</p>
+    <a [routerLink]="['article', article.title]">Read more</a>
+  </div>
+  <div *ngIf='article.isLocal' class="buttons-container">
+    <button [routerLink]="['edit-article', article.id]">Edit</button>
+    <button (click)='removeArticle(article.id)'>Delete</button>
+  </div>
+</div>

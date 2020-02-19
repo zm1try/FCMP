@@ -1,0 +1,13 @@
+:host {
+  position: relative;
+  .news-list-container {
+    width: 800px;
+    margin: 0 auto;
+    max-height: calc(100vh - 330px);
+    overflow: auto;
+    // app-load-more-button {
+    //   position: fixed;
+    //   bottom: 100px;
+    // }
+  }
+}
